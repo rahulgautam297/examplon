@@ -13,4 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree .
+  
+    var i=0;
+    var images= ["<%= asset_path 'image2.jpg' %>",
+                 "<%= asset_path 'image3.jpg' %>",
+                 "<%= asset_path 'image4.jpg' %>",
+                 "<%= asset_path 'image1.jpg' %>"];
+    $(document).ready(function(){
+    setInterval(function(){
+      $(".bPhotos").fadeOut(700,function(){
+      $(".bPhotos").css("background-image",'url('+images[i++]+')');
+      $(".bPhotos").fadeIn(1500);
+      });
+      i=i%images.length;
+    }, 5000);
+    });
