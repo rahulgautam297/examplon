@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Montserrat-Regular';
+  font-family: 'MontserratRegular';
   src:url('<%= asset_path('MontserratRegular.ttf') %>');
   src:url('<%= asset_path('MontserratRegular.eot?#iefix') %>') format('embedded-opentype'),
     url('<%= asset_path('MontserratRegular.svg#Montserrat-Regular') %>') format('svg'),
@@ -21,11 +21,12 @@ html{
 body{
   height: 100%;
   width: 100%;
-  font-family: 'Montserrat-Regular', sans-serif;
+  font-family: 'MontserratRegular', sans-serif;
   background-color: rgba(155,155,155,0.2);
 }
 .bPhotos{
   background-size: cover;
+  background-repeat:no-repeat;
   height: 100%;
   width: 100%;
   background-image: url(<%= asset_path 'image1.jpg' %>);
