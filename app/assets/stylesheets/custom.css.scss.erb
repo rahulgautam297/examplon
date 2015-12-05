@@ -3,13 +3,15 @@
   src:url('<%= asset_path('MontserratRegular.ttf') %>');
   src:url('<%= asset_path('MontserratRegular.eot?#iefix') %>') format('embedded-opentype'),
     url('<%= asset_path('MontserratRegular.svg#Montserrat-Regular') %>') format('svg'),
-    url('<%= asset_path('MontserratRegular.woff') %>') format('woff'),
+    
     url('<%= asset_path('MontserratRegular.ttf') %>') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
 *{
   padding: 0;
   margin: 0;
@@ -49,4 +51,68 @@ body{
   transition: 0.8s;
   -webkit-transition: 0.8s;
  }
+}
+
+
+/* miscellaneous */
+
+.debug_dump {
+  position:fixed;
+  bottom:0;
+  display:block;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 8px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+input {
+  height: auto !important;
+}
+
+.bPhotos{
+position:absolute;
+}
+
+.showMeOnTop{
+position:fixed;
+top:60%;
+left:75%;
+}
+
+.fixMeOnScreen{
+position:fixed;
+top:10%;
+background-color: rgba(255,255,255,0.7);
+padding-bottom:5px;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    padding: 5px;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+.showGif{
+display:none;
 }
