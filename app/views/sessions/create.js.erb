@@ -1,0 +1,6 @@
+  <% flash.each do |message_type, message| %>
+      $('#addFlash').html( "<div class=\"alert-dismissible alert alert-<%= message_type %>\" role=\"alert\"><button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button><%= message %></div>" )
+  <% end %>
+
+
+

@@ -14,7 +14,7 @@
   <![endif]-->
 </head>
 <body>
- <div class="container">
+ <div id="addFlash" class="container">
   <% flash.each do |message_type, message| %>
         <div class="alert-dismissible alert alert-<%= message_type %>" role="alert">
          <button type="button" class="close" data-dismiss="alert"
