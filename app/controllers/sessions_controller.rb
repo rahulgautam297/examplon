@@ -5,13 +5,20 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      if session[:forwarding_url].nil?
-        render js: "window.location='#{user_path(user)}'"
+      if user.activated?
+        log_in user
+        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+        if session[:forwarding_url].nil?
+          render js: "window.location='#{user_path(user)}'"
+        else
+          render js: "window.location='#{session[:forwarding_url]}'"
+          session.delete(:forwarding_url)
+        end
       else
-        render js: "window.location='#{session[:forwarding_url]}'"
-        session.delete(:forwarding_url)
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        render js: "window.location='#{root_url}'"
       end
     else
        respond_to do |format|
