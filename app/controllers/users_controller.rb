@@ -19,9 +19,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Welcome to Examplon!"
-      render js: "window.location='#{user_path(@user)}'"
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      render js: "window.location='#{root_url}'"
     else
       respond_to do |format|
         format.html {render partial: 'new'}
