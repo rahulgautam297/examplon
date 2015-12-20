@@ -1,0 +1,18 @@
+<% provide(:title, "Forgot password") %>
+
+
+<div class="giveMarginToIt">
+  <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1 ">
+    <h3 class="text-center">Forgot password</h3>
+    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+    <div class="text-center" style="margin-top:5px;">
+      <%= link_to "Go back?", root_url%>
+    </div>
+    
+  </div>
+</div>
