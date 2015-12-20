@@ -7,7 +7,12 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      render js: "window.location='#{user_path(user)}'"
+      if session[:forwarding_url].nil?
+        render js: "window.location='#{user_path(user)}'"
+      else
+        render js: "window.location='#{session[:forwarding_url]}'"
+        session.delete(:forwarding_url)
+      end
     else
        respond_to do |format|
         if user
