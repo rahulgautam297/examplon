@@ -3,7 +3,7 @@
        <%=image_tag("477.GIF", alt: "home image",
       width: 62, height: 64, class: "showGif") %>
     <%= form_for(:session, url: login_path,html: {class: 'hideThis'}, remote: true) do |f| %>
-
+          <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 

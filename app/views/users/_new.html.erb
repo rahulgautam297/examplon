@@ -2,7 +2,7 @@
   <div class="col-sm-3 col-xs-8 col-xs-offset-2 col-sm-offset-8  fixMeOnScreen">
     <h3 class="text-center">Examplon</h3>
     <%= form_for(@user, remote: true) do |f| %>
-           <%= render 'shared/error_messages' %>
+           <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>

@@ -1,0 +1,14 @@
+<h3 class="text-center">New Task</h3>
+<%= form_for(@task) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :task, placeholder: "Compose new task" %>
+  </div>
+  <div class="field">
+    <%= f.text_area :location, placeholder: "location" %>
+  </div>
+  <div class="field">
+    <%= f.datetime_select :time, placeholder: "time", ampm: true %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

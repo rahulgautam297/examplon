@@ -4,8 +4,7 @@
   <h3 class="text-center">Update Profile</h3>
   <div class="col-sm-4 col-sm-offset-4 col-xs-10 col-xs-offset-1">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-
+      <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
 

@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @tasks = @user.tasks.paginate(page: params[:page])
+    @task = current_user.tasks.build if logged_in?
     redirect_to root_url and return unless @user.activated?
   end
   

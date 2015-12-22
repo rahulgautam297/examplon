@@ -4,4 +4,17 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h3>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+    <% if @user.tasks.any? %>
+      <h3>Tasks (<%= @user.tasks.count %>)</h3>
+      <ol class="tasks">
+        <%= render @tasks %>
+      </ol>
+      <%= will_paginate @tasks %>
+    <% end %>
+       <section class="tasks_form">
+        <%= render 'shared/task_form' %>
+      </section>
+  </div>
+   
 </div>
