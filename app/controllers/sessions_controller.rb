@@ -9,27 +9,23 @@ class SessionsController < ApplicationController
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         if session[:forwarding_url].nil?
-          render js: "window.location='#{user_path(user)}'"
+          redirect_to user
         else
-          render js: "window.location='#{session[:forwarding_url]}'"
-          session.delete(:forwarding_url)
+          redirect_to redirect_or
         end
       else
         message  = "Account not activated. "
         message += "Check your email for the activation link."
         flash[:warning] = message
-        render js: "window.location='#{root_url}'"
+        redirect_to root_url
       end
     else
-       respond_to do |format|
-        if user
-          flash.now[:danger] = 'Invalid password'
-        else
-          flash.now[:danger] = 'Invalid email/password combination' 
-        end  
-        format.html {render partial: 'new'}
-        format.js 
+      if user
+       flash.now[:danger] = 'Invalid password'
+      else
+       flash.now[:danger] = 'Invalid email/password combination' 
       end
+      render 'static_pages/home'
     end
   end
 

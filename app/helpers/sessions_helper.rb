@@ -47,6 +47,11 @@ module SessionsHelper
     user == current_user
   end
   
+  def redirect_or
+    session[:forwarding_url]
+    session.delete(:forwarding_url)
+  end  
+  
   # Stores the URL trying to be accessed.
   def store_location
     session[:forwarding_url] = request.url if request.get?

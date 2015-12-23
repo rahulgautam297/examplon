@@ -1,5 +1,5 @@
 
-  <div class="col-sm-3 col-xs-8 col-xs-offset-2 col-sm-offset-8  fixMeOnScreen">
+  <div class="col-sm-3 col-xs-8 col-xs-offset-2 col-sm-offset-8 hideOnClick fixMeOnScreen">
     <h3 class="text-center">Examplon</h3>
     <%= form_for(@user, remote: true) do |f| %>
            <%= render 'shared/error_messages', object: f.object %>
@@ -18,6 +18,5 @@
 
       <%= f.submit "Sign up!", class: "btn btn-primary" %>
     <% end %>
-    <p class="giveMargin"> Already on Examplon? <a href="" class="bringSignIn"> 
-    Sign in</a></p>
+    <p class="giveMargin"> Already on Examplon? <a class="callSignIn">Sign in</a></p>
   </div>

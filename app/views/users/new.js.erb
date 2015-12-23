@@ -1,1 +1,11 @@
 $('.hideAfterCall').hide().after('<%= j render("new") %>');
+
+
+  $('.callSignIn').click(function(){
+    $('.hideOnClick').hide();
+    $('.showGif').hide();
+    $('.showGif').removeClass('blockGif');
+    $('.pleaseReplace').show();
+    $('.hideThis').show();
+    $('.hideAfterCall').show();
+  });

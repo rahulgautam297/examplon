@@ -7,4 +7,9 @@ module UsersHelper
     &r=g&d=mm"
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
+  
+            
+  def correct_user_task_form?
+    current_user== User.find(params[:id])
+  end 
 end

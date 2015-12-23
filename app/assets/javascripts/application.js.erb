@@ -22,19 +22,20 @@
                  "<%= asset_path 'image4.jpg' %>",
                  "<%= asset_path 'image1.jpg' %>"];
     $(document).ready(function(){
-    setInterval(function(){
-      $(".bPhotos").fadeOut(700,function(){
-      $(".bPhotos").css("background-image",'url('+images[i++]+')');
-      $(".bPhotos").fadeIn(1500);
-      });
-      i=i%images.length;
-    }, 5000);
+      setInterval(function(){
+        $(".bPhotos").fadeOut(700,function(){
+        $(".bPhotos").css("background-image",'url('+images[i++]+')');
+        $(".bPhotos").fadeIn(1500);
+        });
+        i=i%images.length;
+      }, 5000);
+      
+    $('.pleaseReplace').click(function(){
+      $('.pleaseReplace').hide();
+      $('.hideThis').hide();
+      $('.showGif').show();
+      $('.showGif').addClass('blockGif');
+    });
     
-  $('.pleaseReplace').click(function(){
-  $('.pleaseReplace').hide();
-  $('.hideThis').hide();
-  $('.showGif').show();
-  $('.showGif').addClass('blockGif');
-  });
     });
     

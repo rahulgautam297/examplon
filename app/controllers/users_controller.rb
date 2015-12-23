@@ -24,10 +24,13 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
-      render js: "window.location='#{root_url}'"
+      respond_to do |format|
+        format.html {redirect_to root_url}
+        format.js {render js: "window.location='#{root_url}'"}
+      end
     else
       respond_to do |format|
-        format.html {render partial: 'new'}
+        format.html {redirect_to root_url}
         format.js
       end
     end

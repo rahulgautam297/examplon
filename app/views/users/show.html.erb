@@ -12,9 +12,11 @@
       </ol>
       <%= will_paginate @tasks %>
     <% end %>
+    <% if correct_user_task_form?%>
        <section class="tasks_form">
         <%= render 'shared/task_form' %>
       </section>
+      <% end %>
   </div>
    
 </div>
