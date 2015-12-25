@@ -21,6 +21,10 @@
         <h6 class="text-center">Click on marker to see the task.</h6>
 <div id="map" style=' height: 400px;'></div>
 </div>
+      <div style= "margin-top:15px;">
+        <h5 class="text-center">Current-location:</h5>
+<div id="map1" style=' height: 400px;'></div>
+</div>
 
 <script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
@@ -32,9 +36,23 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers(<%=raw @hash.to_json %>);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
-
-
 });
+</script>
+<script type="text/javascript">
+var handler1 = Gmaps.build('Google');
+handler1.buildMap({ internal: {id: 'map1'} }, function(){
+  if(navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(displayOnMap);
+});
+
+function displayOnMap(position){
+  var marker = handler1.addMarker({
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  });
+  handler1.map.centerOn(marker);
+  handler1.getMap().setZoom(17);
+};
 </script>
 <%else%>
 <script type="text/javascript">
