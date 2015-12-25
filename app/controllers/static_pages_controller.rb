@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   
   def home
-    @task = current_user.tasks.build if logged_in?
+    if logged_in?
+      redirect_to current_user
+    end  
   end
 
   def about

@@ -6,8 +6,13 @@ class TasksController < ApplicationController
     if @task.save
       flash[:success] = "task created!"
       redirect_to current_user
+    elsif (@task.location.blank?)
+      @task.location = request.location.city
+      @task.save
+      flash[:success] = "task created!"
+      redirect_to current_user
     else
-      flash[:danger] = "one of the fields is empty."
+      flash[:danger] = "Task field is empty or you didn't turn on GPS."
       redirect_to current_user
     end
   end

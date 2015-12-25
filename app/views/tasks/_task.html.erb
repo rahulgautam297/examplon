@@ -1,6 +1,8 @@
 <li style="border-bottom:2px solid black;">
 Task -&nbsp;<span class="task"><%= task.task %></span><br>
 Location -&nbsp;<span class="location"><%= task.location %></span><br>
+Static-map:<br>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x300&sensor=false&zoom=15&markers=#{task.latitude}%2C#{task.longitude}", class: "center-block",style: "width:100%" %><br>
 Time -&nbsp;<span class="time"><%= task.time %></span><br>
   <span class="timestamp">
     Posted <%= time_ago_in_words(task.created_at) %> ago.

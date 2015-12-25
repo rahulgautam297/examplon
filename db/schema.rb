@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222121839) do
+ActiveRecord::Schema.define(version: 20151225082410) do
 
   create_table "tasks", force: :cascade do |t|
     t.text     "task"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20151222121839) do
     t.datetime "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "tasks", ["user_id", "created_at"], name: "index_tasks_on_user_id_and_created_at"

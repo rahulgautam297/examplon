@@ -1,4 +1,3 @@
-
 <h3 class="text-center">New Task</h3>
 <%= form_for(@task) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
@@ -6,12 +5,13 @@
     <%= f.text_area :task, placeholder: "Compose new task" %>
   </div>
   <div class="field">
-    <%= f.text_area :location, placeholder: "location" %>
+    <%= f.text_area :location, placeholder: "Location eg.- IIT Delhi" %>
   </div>
+  <%= hidden_field_tag :latitude, @task.latitude %>
+  <%= hidden_field_tag :longitude, @task.longitude %>
   <div class="field">
     <h5 class="text-center" style="margin-top:0;">Select Time</h5>
     <%= f.datetime_select :time, placeholder: "time", ampm: true %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "Post", class: "btn btn-primary postLocation" %>
 <% end %>
-

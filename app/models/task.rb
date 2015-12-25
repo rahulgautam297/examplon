@@ -5,4 +5,6 @@ class Task < ActiveRecord::Base
   validates :task, presence: true
   validates :location, presence: true
   validates :time, presence: true
+  geocoded_by :location   
+  after_validation :geocode
 end

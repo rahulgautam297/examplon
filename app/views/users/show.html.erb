@@ -16,7 +16,44 @@
        <section class="tasks_form">
         <%= render 'shared/task_form' %>
       </section>
+      <div style= "margin-top:15px;">
+        <h5 class="text-center">Dynamic-Map:</h5>
+        <h6 class="text-center">Click on marker to see the task.</h6>
+<div id="map" style=' height: 400px;'></div>
+</div>
+
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+
+<%if current_user.tasks.count>0%>
+<script type= "text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+
+
+});
+</script>
+<%else%>
+<script type="text/javascript">
+var handler = Gmaps.build('Google');
+handler.buildMap({ internal: {id: 'map'} }, function(){
+  if(navigator.geolocation)
+    navigator.geolocation.getCurrentPosition(displayOnMap);
+});
+
+function displayOnMap(position){
+  var marker = handler.addMarker({
+    lat: position.coords.latitude,
+    lng: position.coords.longitude
+  });
+  handler.map.centerOn(marker);
+  handler.getMap().setZoom(17);
+};
+</script>
+<%end%>
       <% end %>
   </div>
-   
 </div>

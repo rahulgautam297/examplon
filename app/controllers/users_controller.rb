@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @tasks = @user.tasks.paginate(page: params[:page])
     @task = current_user.tasks.build if logged_in?
+    @hash = Gmaps4rails.build_markers(@tasks) do |task, marker|
+      marker.lat        task.latitude
+      marker.lng        task.longitude
+      marker.infowindow task.task
+    end
     redirect_to root_url and return unless @user.activated?
   end
   
