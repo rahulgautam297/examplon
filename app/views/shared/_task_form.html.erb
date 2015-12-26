@@ -2,10 +2,10 @@
 <%= form_for(@task) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :task, placeholder: "Compose new task" %>
+    <%= f.text_area :task, placeholder: "Compose new task (required)" %>
   </div>
   <div class="field">
-    <%= f.text_area :location, placeholder: "Location eg.- IIT Delhi" %>
+    <%= f.text_area :location, placeholder: "Location, eg.- IIT Delhi. leave blank for geolocation." %>
   </div>
    <div class="field">
     <%= f.text_area :latitude, placeholder: "Latitude for geolocation (autofilled)" %>
