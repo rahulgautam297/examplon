@@ -7,8 +7,12 @@
   <div class="field">
     <%= f.text_area :location, placeholder: "Location eg.- IIT Delhi" %>
   </div>
-  <%= hidden_field_tag :latitude, @task.latitude %>
-  <%= hidden_field_tag :longitude, @task.longitude %>
+   <div class="field">
+    <%= f.text_area :latitude, placeholder: "Latitude for geolocation (autofilled)" %>
+  </div>
+   <div class="field">
+    <%= f.text_area :longitude, placeholder: "Longitude for geolocation (autofilled)" %>
+  </div>
   <div class="field">
     <h5 class="text-center" style="margin-top:0;">Select Time</h5>
     <%= f.datetime_select :time, placeholder: "time", ampm: true %>

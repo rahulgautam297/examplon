@@ -4,15 +4,14 @@ class TasksController < ApplicationController
   def create
     @task = current_user.tasks.build(task_params)
     if @task.save
-      flash[:success] = "task created!"
-      redirect_to current_user
-    elsif (@task.location.blank? && !@task.task.blank?)
-      @task.location = request.location.city
-      @task.save
+      if @task.location.empty?
+        @task.location=request.location.city
+        @task.save
+      end  
       flash[:success] = "task created!"
       redirect_to current_user
     else
-      flash[:danger] = "Task field is empty."
+      flash[:danger] = "Task field is empty"
       redirect_to current_user
     end
   end
@@ -23,6 +22,6 @@ class TasksController < ApplicationController
   private
 
     def task_params
-      params.require(:task).permit(:task,:location,:time)
+      params.require(:task).permit(:task,:location,:time,:longitude,:latitude)
     end
 end

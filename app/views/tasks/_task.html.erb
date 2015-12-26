@@ -2,7 +2,11 @@
 Task -&nbsp;<span class="task"><%= task.task %></span><br>
 Location -&nbsp;<span class="location"><%= task.location %></span><br>
 Static-map:<br>
+ <%if (!task.latitude.blank? && !task.longitude.blank? )%>
 <%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x300&sensor=false&zoom=15&markers=#{task.latitude}%2C#{task.longitude}", class: "center-block",style: "width:100%" %><br>
+<%else%>
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=550x300&sensor=false&zoom=15&markers=28.635308%2C 77.22496", class: "center-block",style: "width:100%" %><br>
+<%end%>
 Time -&nbsp;<span class="time"><%= task.time %></span><br>
   <span class="timestamp">
     Posted <%= time_ago_in_words(task.created_at) %> ago.
