@@ -3,7 +3,7 @@ Rails.application.configure do
     
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
-  host = 'rails-tutorial-rahul-gautam.c9.io'
+  host = 'examplon-rahul-gautam-20.c9users.io/'
   config.action_mailer.default_url_options = { host: host }
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
