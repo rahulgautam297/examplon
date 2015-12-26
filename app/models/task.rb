@@ -7,4 +7,8 @@ class Task < ActiveRecord::Base
   geocoded_by :location 
   reverse_geocoded_by :latitude, :longitude, :address => :location 
   after_validation :geocode, :reverse_geocode
+  
+  def send_task_control_email
+    TaskMailer.notifier(self).deliver_now
+  end
 end

@@ -7,9 +7,13 @@ class TasksController < ApplicationController
       if @task.location.empty?
         @task.location=request.location.city
         @task.save
-      end  
-      flash[:success] = "task created!"
-      redirect_to current_user
+      end
+      @user=current_user
+      @user.create_edittask_digest
+      @user.create_deletetask_digest
+      @task.send_task_control_email
+      flash[:success] = " Task created.Mail will be delivered half an hour before the scheduled time."
+    redirect_to current_user
     else
       flash[:danger] = "Task field is empty"
       redirect_to current_user

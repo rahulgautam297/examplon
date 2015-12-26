@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :tasks, dependent: :destroy
-  attr_accessor :remember_token, :activation_token, :reset_token
+  attr_accessor :remember_token, :activation_token, :reset_token, :edittask_token, :deletetask_token
   before_save   :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
@@ -26,6 +26,18 @@ class User < ActiveRecord::Base
     self.reset_token = User.new_token
     update_columns(reset_digest: User.digest(reset_token),
     reset_sent_at: Time.zone.now)
+  end
+  
+  # Sets the edit task attributes
+  def create_edittask_digest
+    self.edittask_token = User.new_token
+    update_attribute(:edittask_digest,  User.digest(edittask_token))
+  end
+  
+  # Sets the delete task attributes
+  def create_deletetask_digest
+    self.deletetask_token = User.new_token
+    update_attribute(:deletetask_digest,  User.digest(deletetask_token))
   end
 
   # Sends password reset email.
