@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       marker.lng        task.longitude
       marker.infowindow task.task
     else
-      marker.lat        28.635308
-      marker.lng        77.22496
+      marker.lat        request.location.latitude
+      marker.lng        request.location.longitude
       marker.infowindow task.task
       end
     end
