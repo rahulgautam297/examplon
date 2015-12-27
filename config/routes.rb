@@ -1,3 +1,4 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
 
   get 'password_resets/new'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :tasks,               only: [:create, :destroy]
   resources :control_tasks,       only: [:edit]
+  mount Sidekiq::Web => '/sidekiq'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

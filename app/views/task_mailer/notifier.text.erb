@@ -2,6 +2,6 @@ Hi <%= @task.user.name%>
 
 You task- <%= @task.task %> is scheduled at <%= @task.time %>
 
-To postpone it by two hours click here- <%= edit_control_task_url(@task.user.edittask_token, @task.id) %>
+To postpone it by two hours click here- <%= edit_control_task_url(@task.id) %>
 
-To close it click here- <%= edit_control_task_url( @task.user.deletetask_token, @task.id,delete: "true") %>
+To close it click here- <%= edit_control_task_url(@task.id,delete: "true") %>

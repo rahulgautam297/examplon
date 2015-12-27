@@ -9,6 +9,10 @@ class Task < ActiveRecord::Base
   after_validation :geocode, :reverse_geocode
   
   def send_task_control_email
-    TaskMailer.notifier(self).deliver_now
+    if self.time-30.minutes < Time.zone.now
+      TaskMailer.notifier(self).deliver_now
+    else
+      TaskWorker.perform_at(self.time-30.minutes, self.id)
+    end
   end
 end

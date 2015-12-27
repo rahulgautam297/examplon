@@ -2,7 +2,7 @@ class ControlTasksController < ApplicationController
     
     def edit
         
-      task = Task.find_by(id: params[:format])
+      task = Task.find_by(id: params[:id])
       if !task.nil?
         user= task.user
         if params[:delete]

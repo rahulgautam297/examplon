@@ -21,6 +21,9 @@ gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'sidekiq'
+gem 'redis'
+gem 'sinatra', :require => nil
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
   gem 'byebug',      '3.4.0'
