@@ -12,7 +12,7 @@ class TasksController < ApplicationController
       @user.create_edittask_digest
       @user.create_deletetask_digest
       @task.send_task_control_email
-      flash[:success] = " Task created.Mail will be delivered half an hour before the scheduled time."
+      flash[:success] = " Task created. Mail will be delivered half an hour before the scheduled time."
     redirect_to current_user
     else
       flash[:danger] = "Task field is empty"

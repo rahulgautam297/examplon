@@ -6,7 +6,7 @@ class ControlTasksController < ApplicationController
       if !task.nil?
         user= task.user
         if params[:delete]
-          if user && user.activated? && user.authenticated?(:deletetask,params[:id])
+          if user && user.activated?
             task.destroy
             log_in user
             flash[:info] = "task deleted."
@@ -16,7 +16,7 @@ class ControlTasksController < ApplicationController
             redirect_to root_url
           end
         else
-          if user && user.activated? && user.authenticated?(:edittask,params[:id])
+          if user && user.activated?
             log_in user
             task.time+= 2.hours
             task.save
